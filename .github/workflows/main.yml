@@ -20,7 +20,7 @@ jobs:
 
     - name: Copy website files
       run: |
-        sudo cp -r ./website/* /var/www/html/
+        sudo cp -r ./34.145.105.152/* /var/www/html/
 
     - name: Start Apache HTTP Server
       run: |
@@ -28,7 +28,7 @@ jobs:
 
     - name: Test website
       run: |
-        curl http://localhost/
+        curl http://34.145.105.152/
 
     - name: Stop Apache HTTP Server
       run: |
