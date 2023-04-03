@@ -21,7 +21,7 @@ jobs:
 
     - name: Copy file to webserver
       run: |
-        sudo scp \Downloads\Diagram Document - Terraform_gcp ragavel1262000@10.138.0.2:/var/www/html/
+        sudo cp /home/ragavel1262000/first /var/www/html/
 
 
     - name: Start Apache HTTP Server
