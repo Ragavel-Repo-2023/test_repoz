@@ -1,27 +1,18 @@
-name: Apache HTTP Server CI/CD Pipeline
+name: Deploy to GCP
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: self-hosted
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install SSH
-        run: sudo apt-get install -y openssh-client
-
-      - name: Deploy code to remote server
-        uses: Ragavel-Repo-2023/test_repoz@master
-        with:
-          host: instance-terrfaorm
-          username: ragavel1262000
-          key: b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABChvJ8xRN
+    executor: 
+      name: remote-debian
+      runs-on: ubuntu-latest
+      remote-user: ragavel1262000
+      ssh-key: b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABChvJ8xRN
                tOWRgRa7EndsJkAAAAEAAAAAEAAAGXAAAAB3NzaC1yc2EAAAADAQABAAABgQDKaMEwxCRc
                2AJWsqGDhBiOkZslgeAtASHsINCd0T8iFCbWE/BiYCd6xVagFr1nOt24BZV2b1V+qAUPNS
                1mgKzcaEB7bR75MVb1ImWsdwND7QKX8tXYy2vVbsKazbbFkLMfgtqzDoNFZVyB8QJnGYPF
@@ -58,8 +49,38 @@ jobs:
                GAiSjrosnY/wctkPxP0nW3/fYoMVrRAouhJ7c/o5ft7Ose9C0CGqU+tiWDs19yVNpVjI5w
                Etg8tzSmNB4xuieuXnWTR9kq5/Hz7eYtbWBahXG7+kFigsbN83BzfOeK5LAxW/CJxwqVfG
                Ka532b4z1nCZMRZugatUentL92TKqiait51DCJRi0L7Dfk6g
-          source: /home/ragavel1262000/first
-          target: /var/www/html/
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apache2
+
+      - name: Copy files to Apache directory
+        run: |
+          sudo cp -r /root/initscript.sh /var/www/html/
+
+      - name: Start Apache service
+        run: |
+          sudo systemctl start apache2.service
+
+      - name: Deploy to GCP VM instance
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          project_id: http-terraform-storage-lb
+          service_account_email: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
+          service_account_key: 2538c4604c577452ed6fa2a4c12b224a42253ff9
+          zone: us-west1-b
+          instance_name: instance-terraform
+
+      - name: SSH into GCP VM instance and deploy files
+        uses: Ragavel-Repo-2023/test_repoz@master
+        with:
+          host: 10.138.0.2
+          username: root
+          password: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiIkskt7QvjNXcQW/V7LTHfEwInMsNyems9Z8ZwA2L6KiHGzt78SmBBaXESpRiSZ4ZA704IMacbgZR+YIlR18AlZca+BzqPelUbVm2RKwiOodv/NyVyx/z+Y3Uifww0fLN+3mTCDkbN5a+8kChawGMTgJqKVfiPdZdXcrLJRXcazf5S6jL+21HVgFdpG9TMlpkM2t60iabM9VnDIZo9iawhMwLYjxv6uhsxsDRmJFsUQMF3RHcEDQWAPt0yaQcaAfdmD2trXbaQV0yrLCLl5sYYypbr2bb5PrQuRPG4QFO0pwlpx+NZYAHJX2+RTNjR6pxMwslZeI5jDH58LcpGwMqHyh8EjtJcvQK0moPnB7uo2V6kQ1xDrxaSSs3qyA1BoOQ8SzGlPD5q56Lbdlj1rwtVtMgVd0EN8D8zKLPZCJv8QDFNYljaldRlf/Yh+K/f+smqG3tq7oVzrw4Mzk1Yegvex7QxR+h7InMkpYqjAviEsXS5T4pX3SAphTcZAR4kjk= ragavel1262000@cs-1017235090467-default
           script: |
-            sudo systemctl restart apache2
+            sudo cp -r /var/www/html/* /var/www/html-backup/
+            sudo cp -r /var/www/html-new/* /var/www/html/
