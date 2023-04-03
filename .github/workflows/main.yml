@@ -17,10 +17,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install apache2 -y
+        sudo apt-get install curl -y
 
     - name: Copy website files
       run: |
-        sudo git@github.com:Ragavel-Repo-2023/test_repoz.git /var/www/html/
+        sudo cp github/Ragavel-Repo-2023/test_repoz/first.py /var/www/html/
 
     - name: Start Apache HTTP Server
       run: |
