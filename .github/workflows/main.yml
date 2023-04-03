@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get install -y openssh-client
 
       - name: Deploy code to remote server
-        uses: appleboy/scp-action@master
+        uses: Ragavel-Repo-2023/test_repoz@master
         with:
           host: instance-terrfaorm
           username: ragavel1262000
