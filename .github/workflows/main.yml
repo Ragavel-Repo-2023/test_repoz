@@ -17,10 +17,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y apache2
 
-      - name: Copy files to Apache directory
-        run: |
-          sudo cp -r /home/ragavel1262000/first /var/www/html/
-
       - name: Start Apache service
         run: |
           sudo systemctl start apache2.service
@@ -38,5 +34,3 @@ jobs:
           host: 10.138.0.2
           username: root
           password: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiIkskt7QvjNXcQW/V7LTHfEwInMsNyems9Z8ZwA2L6KiHGzt78SmBBaXESpRiSZ4ZA704IMacbgZR+YIlR18AlZca+BzqPelUbVm2RKwiOodv/NyVyx/z+Y3Uifww0fLN+3mTCDkbN5a+8kChawGMTgJqKVfiPdZdXcrLJRXcazf5S6jL+21HVgFdpG9TMlpkM2t60iabM9VnDIZo9iawhMwLYjxv6uhsxsDRmJFsUQMF3RHcEDQWAPt0yaQcaAfdmD2trXbaQV0yrLCLl5sYYypbr2bb5PrQuRPG4QFO0pwlpx+NZYAHJX2+RTNjR6pxMwslZeI5jDH58LcpGwMqHyh8EjtJcvQK0moPnB7uo2V6kQ1xDrxaSSs3qyA1BoOQ8SzGlPD5q56Lbdlj1rwtVtMgVd0EN8D8zKLPZCJv8QDFNYljaldRlf/Yh+K/f+smqG3tq7oVzrw4Mzk1Yegvex7QxR+h7InMkpYqjAviEsXS5T4pX3SAphTcZAR4kjk= ragavel1262000@cs-1017235090467-default
-          script: |
-            sudo cp -r /home/ragavel1262000/first /var/www/html/index.html
