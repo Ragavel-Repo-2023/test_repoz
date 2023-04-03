@@ -20,7 +20,7 @@ jobs:
 
     - name: Copy website files
       run: |
-        sudo cp -r ./websites/* /var/www/html/
+        sudo cp -r https://github.com/Ragavel-Repo-2023/first.py /var/www/html/
 
     - name: Start Apache HTTP Server
       run: |
