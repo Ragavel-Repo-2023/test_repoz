@@ -8,18 +8,14 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    steps:
-    - uses: google-github-actions/setup-gcloud@master
-      with:
-        project_id: http-terraform-storage-lb
-        service_account_email: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
-        service_account_key: 2538c4604c577452ed6fa2a4c12b224a42253ff9
-    - name: Start GCP instance
-      run: |
-        gcloud compute instances start instance-terraform --zone us-west1-b
-        gcloud compute ssh instance-terraform --zone us-west1-b --command "cd /home/ragavel1262000/"
+    executor:
+      name: remote-debian
+      runs-on: ubuntu-latest
+      remote-user: debian
+      ssh-key: ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBArm/oncI6dk6fDY6iaUXQNVSWtbQsxZpLQFmlIxPO5SWMtnbt/TmYaJa6Hh9uoA10Up43HIYLdkgpKUthXzrDI= google-ssh {"userName":"ragavel1262000@gmail.com","expireOn":"2023-04-03T06:09:48+0000"}
       env:
-        GOOGLE_APPLICATION_CREDENTIALS: 2538c4604c577452ed6fa2a4c12b224a42253ff9
+        REMOTE_HOST: 10.138.0.2
+
 
     - name: Install Apache HTTP Server
       run: |
