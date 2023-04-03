@@ -21,10 +21,6 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: 2538c4604c577452ed6fa2a4c12b224a42253ff9
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Install Apache HTTP Server
       run: |
         sudo apt-get update
