@@ -5,19 +5,18 @@ on:
     branches:
       - main
 
-jobs:
-  build:
-    runs-on: self-hosted
-    executor:
-      name: remote-debian
-      runs-on: ubuntu-latest
-      remote-user: debian
-      ssh-key: ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBArm/oncI6dk6fDY6iaUXQNVSWtbQsxZpLQFmlIxPO5SWMtnbt/TmYaJa6Hh9uoA10Up43HIYLdkgpKUthXzrDI= google-ssh {"userName":"ragavel1262000@gmail.com","expireOn":"2023-04-03T06:09:48+0000"}
+  jobs:
+    build:
+      runs-on: self-hosted
+      executor:
+        name: remote-debian
+        runs-on: ubuntu-latest
+        remote-user: debian
+        ssh-key: ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBArm/oncI6dk6fDY6iaUXQNVSWtbQsxZpLQFmlIxPO5SWMtnbt/TmYaJa6Hh9uoA10Up43HIYLdkgpKUthXzrDI= google-ssh {"userName":"ragavel1262000@gmail.com","expireOn":"2023-04-03T06:09:48+0000"}
       env:
         REMOTE_HOST: 10.138.0.2
 
-
-   - name: Install Apache HTTP Server
+    - name: Install Apache HTTP Server
       run: |
         sudo apt-get update
         sudo apt-get install apache2 -y
