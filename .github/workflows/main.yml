@@ -27,7 +27,7 @@ jobs:
           sudo systemctl start apache2.service
 
       - name: Deploy to GCP VM instance
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud
         with:
           project_id: http-terraform-storage-lb
           service_account_email: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
@@ -36,7 +36,7 @@ jobs:
           instance_name: instance-terraform
 
       - name: SSH into GCP VM instance and deploy files
-        uses: Ragavel-Repo-2023/test_repoz@master
+        uses: Ragavel-Repo-2023/test_repoz
         with:
           host: 10.138.0.2
           username: root
