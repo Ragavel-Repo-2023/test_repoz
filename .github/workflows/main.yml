@@ -7,48 +7,8 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
-    executor: 
-      name: remote-debian
-      runs-on: ubuntu-latest
-      remote-user: ragavel1262000
-      ssh-key: b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABChvJ8xRN
-               tOWRgRa7EndsJkAAAAEAAAAAEAAAGXAAAAB3NzaC1yc2EAAAADAQABAAABgQDKaMEwxCRc
-               2AJWsqGDhBiOkZslgeAtASHsINCd0T8iFCbWE/BiYCd6xVagFr1nOt24BZV2b1V+qAUPNS
-               1mgKzcaEB7bR75MVb1ImWsdwND7QKX8tXYy2vVbsKazbbFkLMfgtqzDoNFZVyB8QJnGYPF
-               CxvosGiKMPrBxYgcERCTankSVImcqU7s68rWKHozvyUH1Wd7hHvcq8Ke6Uq7lo7DztUOZB
-               N6Aqt4Zn1hxiiZ6DaD8j7oJ++9Omrg1B0B86m/YOErE/SUOJ797YobDe/2EA8hYMovnIbO
-               9a7myBHHNONoPCwE9TyeIw1TeUtT1LLUBkyRQ6J94dEJIT0vLFTxts3kSgJT6qX9AD/Bz+
-               xdl9ZN+vkP9ZmWfWNBt2gfF+kil4HbMxlyKZSRPvYinfjhO9hrhkktPMMtpdcavB7lQq1E
-               kvaTtk1sCk79k+q34ZPKs0CdPnh3+i+7EVrI3qymTjizjvStbSbmF/XuhbecsxY6D2Es7y
-               Be1iyNhpdvGR8AAAWguIz/blEI9QMkoNmULSXfQvZbr9EI1qVVK1nHbrgo2W71kLg+cpa2
-               Au5P4jtz6w55ajbTz6+FWSu51KR4Bp7v0MRyGOOfGlEYYDCQ264LXccVMODQ+/gUrszauC
-               RAgPfPzymW2WJG5qeOxG1qzUCFk6DzPc7GaK+zDHMRvqonIHpRYXoO6l8UUgKs1sWr23Nk
-               wyUjcp5kiM7hU9SNPzm5kGbYCcWZjo/fPLZ1W5/Q/dzbEnoFtDU0HvTfJgHDPUTl1qP4dN
-               39RP/iXWCAGsOaGb33/jL8Kq8nt0ObfHzNchWEHsF8cR8lw5rZXoOmmjps/pH1V3QIaz13
-               5ksV3cPO2AA3cTBVNBx8QtmvERCmHmuJbE+JMiBzrnLiIIUfL/wK9rL6C5gMqpfR0dBrKb
-               Pvwy4bY/+YsulQ1pcaoM2RjoYtIaQiEtbslvt/w87jyt6lUoaDh7H+vIZ0B+xGDn9oj0x8
-               urgMsKbglfUYqQDl+BdkkMx2Bc/mtAmNOVMtYWgjY9CYrrFnkngCT3hfHDWHAxNKa+t2eg
-               bAaGWzf+UyIyBgEhzbSeBPmQosnVuW+VD+Ghb8m2pmknhBK10PDqbFTshFDHSNUvxf/tic
-               K/P9JllwoMK53OCHaZVtE1dTx1QI9/JYkL6VYCsaAXfjZDi8UCkHTlu8IC1owKIdg8EiQb
-               ldObkr0YkCcB40VawCxLsivLqN1rrAss/9x0Yo4FoyzQXWLaaipE8SY0nLqJODyaI1WeZI
-               bcYdjnjTHDKAFh/ZfN3kryQ880nfQsQ2ZRBGha1rnlm2q7Q2xfa2IE1TBHOWihRWDy+Uzu
-               DcVeUkBbHUZF99MU1XHa8A9ixARF1rFZ7RsE64ZddXmWYmiGLYSyYaG8Pbm4gXf/X2vh2b
-               FWcftInJtH1gKuNGOWHHcvB5FFGgbBlGobzGxkRv/1QUrkZ3T+56e8qVFgs2lmDW/+g7wR
-               wDYhM6W7jVVqMmT1FBAF1KuTVMB+uQ5DgIf9M97W+4JEkBitsvnye0DevqQDppWUHvq7Uc
-               7tTHYlW9sWj3kKWzUYClmgUqBQieTcUvsRVaswljtPHb/EnoUMvfn42pKDWnJjzG1rYlJx
-               3suGp9vSZvU9FIOmUATJ3/PXi1+TBJq/r2urVSs8z65xns+Qi0Ged73J7RM/DcHAqDTJm/
-               mdUDMpg0davrw2v1fM3Yktv+tUuOFJBwRwfevOX1/v+juTyCytEVFEiNCz8SKYeGwcTO2V
-               fFPM+I+n5vn0/WZezw6AsXRgIsd9zUvtShoqtbMi3+q5pW44DKFIAGQi51IegRhCzfgqW0
-               3JFeNuV2FA3qy12UHdAU4HTSXDsUaz+pX9+CfSYI37pBb7wc1fJnvuwyUe78qq1nRNNBz8
-               u8/zN116rQnhS4PxnkoxtZpBHRLCrJBExZ2YFgT7N6xQWPa5g8CQfSHVdogUixGxTqps9r
-               ofIv+yD5+jSjJ3mui6XrvQb1J7yvoFY2+JgjI+debHZRwkeh05017Knt2TtG3szxk05kuP
-               xVvdS2LHYYDVchvBuP38hbV/gl7pi0FZPersT1XWdmae2DhnvrLshZa7+GCBlpaSRfHy9x
-               r7h+dythopPscr5bARWnaDzWrVhpK9xUWu830NIYcPd5acs+RSTWunreWjJUhHoOV1ahxw
-               vGXoqQREtqUw2L1rIvZZ35lBMjqit1WSdpVzhHXDDbAmfeoW/biCSVwstgIdWfXESB0vTc
-               GAiSjrosnY/wctkPxP0nW3/fYoMVrRAouhJ7c/o5ft7Ose9C0CGqU+tiWDs19yVNpVjI5w
-               Etg8tzSmNB4xuieuXnWTR9kq5/Hz7eYtbWBahXG7+kFigsbN83BzfOeK5LAxW/CJxwqVfG
-               Ka532b4z1nCZMRZugatUentL92TKqiait51DCJRi0L7Dfk6g
+    runs-on: ubuntu-latest
+  
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
