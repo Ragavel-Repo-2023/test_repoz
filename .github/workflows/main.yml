@@ -21,7 +21,7 @@ jobs:
 
     - name: Copy file to webserver
       run: |
-        sudo cp github/Ragavel-Repo-2023/test_repoz/first.py /var/www/html/
+        sudo cp https://github.com/Ragavel-Repo-2023/test_repoz.git/first.py /var/www/html/
 
 
     - name: Start Apache HTTP Server
