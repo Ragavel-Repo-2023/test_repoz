@@ -19,7 +19,7 @@ jobs:
 
       - name: Copy files to Apache directory
         run: |
-          sudo cp -r /root/initscript.sh /var/www/html/
+          sudo cp -r ./html/* /var/www/html/
 
       - name: Start Apache service
         run: |
