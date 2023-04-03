@@ -19,9 +19,10 @@ jobs:
         sudo apt-get install apache2 -y
         sudo apt-get install curl -y
 
-    - name: Copy website files
+    - name: Copy file to webserver
       run: |
         sudo cp github/Ragavel-Repo-2023/test_repoz/first.py /var/www/html/
+
 
     - name: Start Apache HTTP Server
       run: |
