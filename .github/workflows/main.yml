@@ -17,6 +17,13 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 11
+        architecture: x64
+        check-latest: false
+        server-id: github
+        server-username: Ragavel-Repo-2023
+        server-password: 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
+        overwrite-settings: true
+        job-status: success
 
     - name: Build with Maven # build the Java code using Maven
       run: mvn package --file pom.xml
