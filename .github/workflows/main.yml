@@ -1,0 +1,49 @@
+name: Java CI/CD
+
+on:
+  push:
+    branches: [ main ] # run CI/CD on push to main branch
+  pull_request:
+    branches: [ main ] # run CI/CD on pull requests to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # choose the operating system for the CI/CD environment
+
+    steps:
+    - uses: actions/checkout@v2 # checkout the code from GitHub
+
+    - name: Set up JDK 11 # install JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+
+    - name: Build with Maven # build the Java code using Maven
+      run: mvn package --file pom.xml
+
+    - name: Upload artifact # upload the JAR file as an artifact for later use
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-app
+        path: target/my-app.jar
+
+  deploy:
+    needs: build # deploy the code after the build job is successful
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2 # checkout the code from GitHub
+
+    - name: Set up JDK 11 # install JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+
+    - name: Download artifact # download the JAR file from the build job
+      uses: actions/download-artifact@v2
+      with:
+        name: my-app
+        path: target/my-app.jar
+
+    - name: Deploy to server # deploy the JAR file to a server
+      run: scp target/my-app.jar user@server:/path/to/destination
