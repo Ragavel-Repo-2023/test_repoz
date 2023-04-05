@@ -24,7 +24,7 @@ jobs:
         server-password: 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
         overwrite-settings: true
         job-status: success
-        distribution: x86_64
+        distribution: ubuntu
         java-package: jdk
 
     - name: Build with Maven # build the Java code using Maven
