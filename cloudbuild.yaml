@@ -7,17 +7,9 @@ options:
 substitutions:
   _PROJECT_ID: '	http-terraform-storage-lb'
   _ZONE: 'us-central1-f'
-steps:
-- name: 'gcr.io/cloud-builders/mvn'
-  args: ['clean', 'install']
-options:
-  logging: 'CLOUD_LOGGING_ONLY'
   build:
     service_account: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
     logs_bucket: my-bucket-tffzzz
-steps:
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'package']
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
