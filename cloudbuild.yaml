@@ -3,6 +3,15 @@ steps:
   args: ['clean', 'install']
 options:
   logging: 'CLOUD_LOGGING_ONLY'
+  substitution_option: 'ALLOW_LOOSE'
+substitutions:
+  _PROJECT_ID: 'my-project'
+  _ZONE: 'us-central1-f'
+steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'install']
+options:
+  logging: 'CLOUD_LOGGING_ONLY'
   build:
     service_account: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
     logs_bucket: my-bucket-tffzzz
