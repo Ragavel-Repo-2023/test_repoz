@@ -1,4 +1,12 @@
 steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'install']
+options:
+  logging: 'CLOUD_LOGGING_ONLY'
+  build:
+    service_account: my-service-account@my-project.iam.gserviceaccount.com
+    logs_bucket: my-logs-bucket
+steps:
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'package']
   - name: 'gcr.io/cloud-builders/docker'
