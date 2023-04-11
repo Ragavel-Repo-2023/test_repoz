@@ -5,7 +5,7 @@ options:
   logging: 'CLOUD_LOGGING_ONLY'
   substitution_option: 'ALLOW_LOOSE'
 substitutions:
-  _PROJECT_ID: 'my-project'
+  _PROJECT_ID: '	http-terraform-storage-lb'
   _ZONE: 'us-central1-f'
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
