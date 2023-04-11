@@ -9,7 +9,6 @@ substitutions:
   _ZONE: 'us-central1-f'
   build:
     service_account: http-load-balancer@http-terraform-storage-lb.iam.gserviceaccount.com
-    logs_bucket: gs://my-bucket-tffzzz/
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
